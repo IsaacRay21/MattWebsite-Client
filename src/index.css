@@ -1,0 +1,20 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+  
+* {
+  font-family: inherit;
+}
+
+.content{
+  width: 88vw;
+  min-height: 80vh;
+  padding: 12.5vh 5vw 3vh 5vw;
+  overflow-x: hidden;
+}
+
+.content > *{
+  margin-bottom: 2rem;
+}

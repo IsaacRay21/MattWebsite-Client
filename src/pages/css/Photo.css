@@ -1,0 +1,37 @@
+
+.photo {
+  display: flex;
+  flex-direction: column;
+}
+
+.main_carousel {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.carousel-container {
+  padding: 0 2rem;
+  height: 100%;
+}
+
+.gallery-container {
+  height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.spotlight-container {
+  height: auto;
+  width: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}

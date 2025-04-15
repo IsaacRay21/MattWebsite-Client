@@ -1,0 +1,59 @@
+.hero-container {
+    width: 100%;
+    height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: gray;
+}
+
+.content_links {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    width: min(100%, 1200px);
+}
+
+@media (min-width:  600px) {
+    .content_links {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.content_links_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    margin: 0 auto; 
+    overflow: hidden; 
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    
+}
+
+.links_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(80%);
+    transition: transform 0.5s; 
+}
+
+.links_img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.links-title{
+    color: white;
+    position: absolute;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    z-index: 3;
+    margin: 0;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}

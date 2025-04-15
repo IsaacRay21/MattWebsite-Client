@@ -1,0 +1,23 @@
+.waveform{
+    height: 100%;
+    width:100%;
+}
+
+.audio-player{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding-right: 1rem;
+}
+
+.playpause-button{
+    width: 5vw;
+}
+
+.hide-playpause-button{
+    display: none;
+}
+
