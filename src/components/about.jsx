@@ -30,7 +30,7 @@ export const About = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/about');
+                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/about`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

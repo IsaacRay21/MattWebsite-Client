@@ -27,7 +27,7 @@ export const Hero = ({onLearnMoreClick}) => {
 
         const fetchData = async () => {
             try {
-                const response = await fetch(`/api/hero`);
+                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/hero`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

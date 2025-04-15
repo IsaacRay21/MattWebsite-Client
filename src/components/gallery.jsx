@@ -11,7 +11,7 @@ export const Gallery = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`/api/photo`);
+                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/photo`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

@@ -12,7 +12,7 @@ function Video() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/video');
+                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/video`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
