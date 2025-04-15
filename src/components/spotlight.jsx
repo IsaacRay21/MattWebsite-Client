@@ -81,7 +81,7 @@ export const Spotlight = () => {
             </div>
             <div className="story" ref={storyRef}>
                 <h1>{data.title}</h1>
-                <p>{data.description}</p>
+                <p style={{ whiteSpace: 'pre-wrap' }}>{data.description}</p>
             </div>
         </div>
     )
