@@ -48,6 +48,7 @@ function Audio() {
 							}
 							<div className="audio-other" id={"audio" + idx +"_text"}>
 								{audio.title && <h1>{audio.title}</h1>}
+								{audio.description && <p>{audio.description}</p>}
 								{audio.audio_filename && <AudioPlayer url={audio.audio_filename}/>}
 								{/* <p>{audio.description}</p> */}
 							</div>

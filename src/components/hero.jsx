@@ -55,7 +55,7 @@ export const Hero = ({onLearnMoreClick}) => {
         <div className="hero-container">
             <div className="hero-text">
                 <h1 className="hero-title">{data.title}</h1>
-                <button className="hero-button" onClick={onLearnMoreClick}> {data.button_text}</button>
+                {data.button_text && <button className="hero-button" onClick={onLearnMoreClick}> {data.button_text}</button>}
             </div>   
             <img id="hero-img" src={data.photo_filename} alt= "hero-img" style={{ filter: `blur(${blur}px)` }}/>
         </div>  
