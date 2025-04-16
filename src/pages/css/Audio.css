@@ -38,6 +38,10 @@
   margin-left: 1.5rem;
 }
 
+.audio-other p {
+  margin-left: 1.5rem;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .audio-container {
