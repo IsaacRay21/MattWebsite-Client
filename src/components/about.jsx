@@ -79,7 +79,7 @@ export const About = () => {
                             )}
                         </div>
                         <div className="contact-info">
-                            {data.phone_number && <p>{data.phone_number}</p>}
+                            {data.phone_number && <p style={{ whiteSpace: 'pre-wrap' }}>{data.phone_number}</p>}
                             {data.email && <p>{data.email}</p>}
                         </div>
                     </div>
