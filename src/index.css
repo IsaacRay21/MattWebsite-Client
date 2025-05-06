@@ -8,6 +8,21 @@ body {
   font-family: inherit;
 }
 
+h1 {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  line-height: 1.2;
+  color: #333;
+}
+
+p{
+  font-size: clamp(0.875rem, 1.1vw, 1rem);
+  line-height: 1.7;
+  color: #666;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd transparent;
+  white-space: pre-wrap;
+}
+
 .content{
   width: 88vw;
   min-height: 80vh;

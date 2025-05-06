@@ -7,15 +7,19 @@ export const Carousel = ({ type="" }) => {
     const [fullscreenImage, setFullscreenImage] = useState(null);
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(null);
+    const [slideTotal, setSlideTotal] = useState(0);
+    const [currSlide, setCurrSlide] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const prevSlide = () => {
         setSlide(slide === 0? data.length - 1: slide - 1);
+        setCurrSlide(currSlide === 1 ? data.length: currSlide - 1)
     };
 
     const nextSlide = () => {
         setSlide(slide === data.length - 1? 0 : slide + 1);
+        setCurrSlide(currSlide === data.length ? 1: currSlide + 1)
     };
 
     useEffect(() => {
@@ -27,6 +31,11 @@ export const Carousel = ({ type="" }) => {
                 }
                 const result = await response.json();
                 setData(result);
+                setSlideTotal(result.length)
+                if (result.length > 0){
+                    setCurrSlide(1)
+                }
+
             } catch (err) {
                 console.error("Failed to load Data:", err);
                 setError(err.message);
@@ -44,34 +53,29 @@ export const Carousel = ({ type="" }) => {
 
     return (
         <div className="carousel-container"> 
-            <SlArrowLeft className="arrow arrow-left" onClick={prevSlide}/>
-            {data.map((photo, idx) => {
-                return (
-                    <div className="slides">
-                        <img 
-                            src={photo.photo_filename} 
-                            key={idx} 
-                            onClick={() => setFullscreenImage(photo.photo_filename)} 
-                            alt={photo.description} 
-                            className={slide === idx ? "slide" : "slide slide-hidden"} 
-                        />
-                        <p className={slide === idx ? "title" : "title title-hidden"}> {photo.description}</p>
-                    </div>
-                )
-            })}
-            <SlArrowRight className="arrow arrow-right" onClick={nextSlide}/>
-            <span className="indicators">
-                {data.map((_, idx) => {
-                    return <button 
-                                key={idx}
-                                className={slide === idx ? "indicator" : "indicator indicator-inactive"}
-                                onClick={() => {
-                                    setSlide(idx)
-                                }}>
-                            </button>
+            <div className="slides-container"> 
+                {data.map((photo, idx) => {
+                    return (
+                        <div 
+                            className= {`slide ${slide === idx ? "active" : ""}`}
+                            key={idx}
+                        >
+                            <img 
+                                className="slide-img"
+                                src={photo.photo_filename} 
+                                onClick={() => setFullscreenImage(photo.photo_filename)} 
+                                alt={photo.description} 
+                            />
+                            <p className={slide === idx ? "description" : "description description-hidden"}> {photo.description}</p>
+                        </div>
+                    )
                 })}
-            </span>
-
+            </div>
+            <div className="slide-navigator">
+                <SlArrowLeft className="arrow arrow-left" onClick={prevSlide}/>
+                <span className="slide-counter">{currSlide} / {slideTotal}</span>
+                <SlArrowRight className="arrow arrow-right" onClick={nextSlide}/>
+            </div>
             {fullscreenImage && (
                 <FullscreenImage
                 src={fullscreenImage}

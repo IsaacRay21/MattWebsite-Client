@@ -51,7 +51,6 @@
 
 .about-text > p {
     margin: 0;
-    white-space: pre-wrap;
     overflow-y: auto;
     max-height: 50vh;
     text-align: left;

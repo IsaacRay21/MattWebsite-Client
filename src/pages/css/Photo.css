@@ -5,16 +5,13 @@
 }
 
 .main_carousel {
-  height: 80vh;
-  display: flex;
-  justify-content: center;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  height: 80vh;
 }
 
 .carousel-container {
-  padding: 0 2rem;
   height: 100%;
 }
 
@@ -28,9 +25,8 @@
   padding: 2rem;
 }
 
+
 .spotlight-container {
-  height: auto;
-  width: auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;

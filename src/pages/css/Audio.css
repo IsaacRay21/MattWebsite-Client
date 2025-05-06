@@ -42,7 +42,6 @@
   margin-left: 1.5rem;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .audio-container {
     align-items: center;
@@ -64,6 +63,12 @@
   .audio-other h1 {
     margin-left: 1.5rem;
     font-size: 1rem;
+  }
+
+  .audio-other p {
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    overflow-y: scroll;
   }
   
 }

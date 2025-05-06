@@ -1,54 +1,11 @@
 import "./css/spotlight.css"
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { Carousel } from "./carousel"
 
 export const Spotlight = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const story_carouselRef = useRef(null);
-    const storyRef = useRef(null);
-
-    const [viewportSize, setViewportSize] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight,
-    });
-
-    const updateStoryHeight = () => {
-        if (storyRef.current && story_carouselRef.current){
-            storyRef.current.style.height = `${story_carouselRef.current.offsetHeight}px`;
-        }
-    }
-    
-      // Function to update viewport size
-    const updateViewportSize = () => {
-        setViewportSize({
-            width: window.innerWidth,
-            height: window.innerHeight,
-        })
-    };
-
-    useEffect(() => {
-        if (viewportSize.width >= 700) {
-            updateStoryHeight();
-        } else if (storyRef.current) {
-            storyRef.current.style.height = "auto";  // Reset height when < 700px
-        }
-    }, [[], viewportSize.width]);
-
-    useEffect(() => {
-        updateStoryHeight();
-    }, []);
-
-    useEffect(() => {
-        window.addEventListener('resize', updateViewportSize, );
-        window.addEventListener('resize', updateStoryHeight);
-    
-        return () => {
-          window.removeEventListener('resize', updateViewportSize);
-          window.removeEventListener('resize', updateStoryHeight);
-        };
-    }, []); 
 
     useEffect(() => {
         const fetchData = async () => {
@@ -76,12 +33,12 @@ export const Spotlight = () => {
 
     return (
         <div className="spotlight-container">
-            <div className="story_carousel" ref={story_carouselRef}>
+            <div className="story_carousel">
                 <Carousel type="storycarousel"/>
             </div>
-            <div className="story" ref={storyRef}>
+            <div className="story">
                 <h1>{data.title}</h1>
-                <p style={{ whiteSpace: 'pre-wrap' }}>{data.description}</p>
+                <p>{data.description}</p>
             </div>
         </div>
     )
