@@ -2,7 +2,7 @@ import {useEffect } from 'react';
 import Portal from './portal';
 import "./css/fullscreenImage.css"
 
-const FullscreenImage = ({src, onClose}) => {
+const FullscreenImage = ({src, description, onClose}) => {
     
 
     useEffect(() => {
@@ -26,6 +26,9 @@ const FullscreenImage = ({src, onClose}) => {
             <div className="modal-backdrop" >
                 <div className="modal-content">
                     <img src={src} alt="Fullscreen"/>
+                    <div className="description-container">
+                        <p>{description}</p>
+                    </div>
                     <button aria-label="Close modal" onClick={onClose}>&times;</button>
                 </div>
             </div>

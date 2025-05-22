@@ -5,6 +5,7 @@ import FullscreenImage from "./fullscreenImage"
 
 export const Carousel = ({ type="" }) => {
     const [fullscreenImage, setFullscreenImage] = useState(null);
+    const [fullscreenDescription, setFullscreenDescription] = useState(null);
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(null);
     const [slideTotal, setSlideTotal] = useState(0);
@@ -63,7 +64,10 @@ export const Carousel = ({ type="" }) => {
                             <img 
                                 className="slide-img"
                                 src={photo.photo_filename} 
-                                onClick={() => setFullscreenImage(photo.photo_filename)} 
+                                onClick={() => {
+                                    setFullscreenImage(photo.photo_filename);
+                                    setFullscreenDescription(photo.description);
+                                  }}
                                 alt={photo.description} 
                             />
                             <p className={slide === idx ? "description" : "description description-hidden"}> {photo.description}</p>
@@ -79,6 +83,7 @@ export const Carousel = ({ type="" }) => {
             {fullscreenImage && (
                 <FullscreenImage
                 src={fullscreenImage}
+                description={fullscreenDescription}
                 onClose={() => setFullscreenImage(null)}
                 />
             )}
