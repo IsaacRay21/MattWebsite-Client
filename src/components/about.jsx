@@ -1,31 +1,11 @@
 import "./css/about.css";
 import { useState, useEffect} from 'react';
 import { FaInstagram, FaLinkedin } from "react-icons/fa6";
-import { Editor, EditModal} from "./editor"
 
 export const About = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalData, setModalData] = useState(null);
-
-    const openModal = (e) => {
-        setModalData(e);
-        setIsModalOpen(true);
-    }
-
-
-    // const startEditing = () => {
-    //     setIsEditing(true)
-    // }
-
-    // const onSave = () => {
-
-    // }
-
-    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,14 +37,13 @@ export const About = () => {
                 {data.filename && (
                     <img 
                         className="about-photo" 
-                        src={data.filename} 
+                        src= {data.filename}
                         alt="about me" 
-                        onClick={isEditing ? (e) => openModal(e) : null}
                     />
                 )}
                 <div className="about-text">
-                    <h1 onClick={isEditing ? (e) => openModal(e) : null}>{data.title || 'About Me'}</h1>
-                    <p onClick={isEditing ? (e) => openModal(e) : null}>{data.description || 'No description available'}</p>
+                    <h1>{data.title || 'About Me'}</h1>
+                    <p>{data.description || 'No description available'}</p>
                     <div className="contacts">
                         <div className="social-links">
                             {data.instagram_url && (
@@ -85,8 +64,6 @@ export const About = () => {
                     </div>
                 </div>
             </div>
-            {/* <Editor startEditing={startEditing} isEditing={isEditing} onSave={onSave}/>
-            {isModalOpen && <EditModal elem={modalData} setIsModalOpen={setIsModalOpen}/>} */}
         </div>
     );
 };

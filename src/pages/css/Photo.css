@@ -6,7 +6,6 @@
 
 .main_carousel {
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   height: 80vh;
 }
@@ -20,7 +19,6 @@
   width: auto;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   padding: 2rem;
 }
@@ -28,6 +26,5 @@
 
 .spotlight-container {
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
