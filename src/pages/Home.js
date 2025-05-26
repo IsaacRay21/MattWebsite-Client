@@ -2,6 +2,7 @@ import './css/Home.css';
 import { useRef, useState, useEffect } from "react";
 import { Navbar } from "../components/navbar.jsx";
 import { Hero } from "../components/hero.jsx";
+import { Carousel } from "../components/carousel.jsx";
 import { Link } from "react-router-dom";
 import { About } from "../components/about.jsx"
 
@@ -43,9 +44,9 @@ function Home() {
         <div className='home'>
             <Navbar />
             <div className="content"> 
-                <Hero
-                    onLearnMoreClick={scrollToLinks}
-                />
+                <div className='main_carousel'>
+                    <Carousel type="maincarousel" /> 
+                </div>
                 <div ref={linksRef} className="content_links">  
                     {data.map((link, idx) => {
                         return (<Link to={link.link_to} className="content_links_container">

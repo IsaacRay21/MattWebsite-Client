@@ -11,9 +11,16 @@
 }
 
 a {
-    color: #000;
+    color: #393939;
     text-decoration: none;
     cursor: pointer;
+    display: inline-block; /* Required for transform */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+    color: #000;
+    transform: scale(1.05);
 }
 
 .link-container{
@@ -33,6 +40,14 @@ a {
 li {
     list-style: none;
 }
+
+.logo a {
+    font-weight: 700; /* Even bolder than <b> */
+    color: #333; /* Darker color */
+    
+}
+
+
 
 .navbar-toggle {
     display: none; 
@@ -79,3 +94,4 @@ li {
         display: block;
     }
 }
+

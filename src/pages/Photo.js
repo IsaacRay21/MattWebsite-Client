@@ -10,9 +10,6 @@ function Photo() {
     <div className='photo'>
       <Navbar/>
       <div className="content"> 
-        <div className='main_carousel'>
-          <Carousel type="maincarousel" /> 
-        </div>
         <Spotlight type="storycarousel"/>
         <Gallery/>
       </div>
