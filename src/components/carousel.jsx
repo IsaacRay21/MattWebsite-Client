@@ -102,8 +102,9 @@ export const Carousel = ({ type="" }) => {
                 <SlArrowLeft className="arrow arrow-left" onClick={prevSlide}/>
                 <span className="slide-counter">{currSlide} / {slideTotal}</span>
                 <SlArrowRight className="arrow arrow-right" onClick={nextSlide}/>
-                <SlControlPlay onClick={togglePlayPause} className={!isPlaying ? "playpause-button" : "playpause-button hide-playpause-button"}></SlControlPlay>
-                <SlControlPause onClick={togglePlayPause} className={isPlaying ? "playpause-button" : "playpause-button hide-playpause-button"}></SlControlPause>
+                <button onClick={togglePlayPause} className="playpause-button-carousel">
+                    {isPlaying ? <SlControlPause /> : <SlControlPlay />}
+                </button>
             </div>
             {fullscreenImage && (
                 <FullscreenImage

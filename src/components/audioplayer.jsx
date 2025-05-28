@@ -1,47 +1,70 @@
-import {useState, useRef, React, useEffect} from 'react'
+import { useState, useRef, useEffect } from 'react';
 import WaveSurfer from 'wavesurfer.js';
-import {BsFillPlayFill, BsFillPauseFill} from 'react-icons/bs'
-import "./css/audioplayer.css"
+import { SlControlPlay, SlControlPause} from "react-icons/sl"
+import "./css/audioplayer.css";
 
-export const AudioPlayer = ({url}) => {
-  const [playing, setPlaying] = useState(false)
+export const AudioPlayer = ({ url }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const waveformRef = useRef(null);
-  let wavesurfer = useRef(null);
+  const wavesurfer = useRef(null);
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+  };
 
   useEffect(() => {
-    if (!wavesurfer.current) {
-      wavesurfer.current = WaveSurfer.create({
-        container: waveformRef.current,
-        waveColor: "black",
-        progressColor: "red",
-        url: url,
-        dragToSeek: true,
-        width: "100%",
-        height: "auto",
-      })
+    // Clean up previous instance if it exists
+    if (wavesurfer.current) {
+      wavesurfer.current.destroy();
     }
-    
+
+    // Create new instance without Timeline plugin
+    wavesurfer.current = WaveSurfer.create({
+      container: waveformRef.current,
+      waveColor: "#666",
+      progressColor: "rgb(47, 65, 183)",
+      cursorColor: "#666",
+      url: url,
+      dragToSeek: true,
+      width: "100%",
+      height: 50,
+      barWidth: 1,
+      barGap: 1,
+    });
+
+    wavesurfer.current.on('timeupdate', (time) => {
+      setCurrentTime(time);
+    });
+
+    wavesurfer.current.on('ready', () => {
+      setDuration(wavesurfer.current.getDuration());
+    });
 
     return () => {
-      if (wavesurfer.current){
-        wavesurfer.current.destroy();
-        wavesurfer.current= null;
-      }
-    }
-  }, [url])
+      wavesurfer.current?.destroy();
+    };
+  }, [url]);
 
-  const handlePlayPause = () => {
-    if (wavesurfer.current){
-        wavesurfer.current.playPause();
-        setPlaying(!playing);
-    }
-  }
+  const togglePlayPause = () => {
+    wavesurfer.current?.playPause();
+    setIsPlaying(!isPlaying);
+  };
 
   return (
     <div className="audio-player">
-        <BsFillPlayFill onClick={handlePlayPause} className={!playing ? "playpause-button" : "playpause-button hide-playpause-button"}></BsFillPlayFill>
-        <BsFillPauseFill onClick={handlePlayPause} className={playing ? "playpause-button" : "playpause-button hide-playpause-button"}></BsFillPauseFill>
-        <div ref={waveformRef} className="waveform"></div>
+      <div className="player-controls">
+        <button onClick={togglePlayPause} className="playpause-button">
+          {isPlaying ? <SlControlPause /> : <SlControlPlay />}
+        </button>
+        <span className="time-display">
+          {formatTime(currentTime)} / {formatTime(duration)}
+        </span>
+      </div>
+      <div ref={waveformRef} className="waveform"></div>
     </div>
   );
-}
+};

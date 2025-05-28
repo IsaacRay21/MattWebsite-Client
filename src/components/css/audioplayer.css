@@ -5,19 +5,38 @@
 
 .audio-player{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column-reverse;
+    justify-content: center;
     align-items: center;
+    gap:1rem;
     width: 100%;
     height: auto;
     padding-right: 1rem;
+    margin-left: 1.5rem;
 }
 
-.playpause-button{
-    width: 5vw;
+.player-controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1.5rem;
 }
 
-.hide-playpause-button{
-    display: none;
+.playpause-button {
+    background: none;
+    border: none;
+    color: #666;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-size: inherit; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.time-display {
+    color: #666;
+    min-width: 8ch;
+}
