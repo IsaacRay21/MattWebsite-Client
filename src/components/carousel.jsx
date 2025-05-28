@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import "./css/carousel.css"
-import {SlArrowLeft, SlArrowRight} from "react-icons/sl"
+import {SlArrowLeft, SlArrowRight, SlControlPlay, SlControlPause} from "react-icons/sl"
 import FullscreenImage from "./fullscreenImage"
 
 export const Carousel = ({ type="" }) => {
@@ -8,10 +8,13 @@ export const Carousel = ({ type="" }) => {
     const [fullscreenDescription, setFullscreenDescription] = useState(null);
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(true);
     const [slideTotal, setSlideTotal] = useState(0);
     const [currSlide, setCurrSlide] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    
 
     const prevSlide = () => {
         setSlide(slide === 0? data.length - 1: slide - 1);
@@ -21,6 +24,10 @@ export const Carousel = ({ type="" }) => {
     const nextSlide = () => {
         setSlide(slide === data.length - 1? 0 : slide + 1);
         setCurrSlide(currSlide === data.length ? 1: currSlide + 1)
+    };
+
+    const togglePlayPause = () => {
+        setIsPlaying(prev => !prev);
     };
 
     useEffect(() => {
@@ -47,6 +54,22 @@ export const Carousel = ({ type="" }) => {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (!data) return;
+
+        let intervalId;
+        
+        if (isPlaying) {
+            intervalId = setInterval(() => {
+                nextSlide();
+            }, 7000);
+        }
+
+        return () => {
+            if (intervalId) clearInterval(intervalId);
+        };
+    }, [isPlaying, nextSlide, data]);
 
     if (loading) return <div className="carousel-container">Loading...</div>;
     if (error) return <div className="carousel-container">Error: {error}</div>;
@@ -79,12 +102,14 @@ export const Carousel = ({ type="" }) => {
                 <SlArrowLeft className="arrow arrow-left" onClick={prevSlide}/>
                 <span className="slide-counter">{currSlide} / {slideTotal}</span>
                 <SlArrowRight className="arrow arrow-right" onClick={nextSlide}/>
+                <SlControlPlay onClick={togglePlayPause} className={!isPlaying ? "playpause-button" : "playpause-button hide-playpause-button"}></SlControlPlay>
+                <SlControlPause onClick={togglePlayPause} className={isPlaying ? "playpause-button" : "playpause-button hide-playpause-button"}></SlControlPause>
             </div>
             {fullscreenImage && (
                 <FullscreenImage
-                src={fullscreenImage}
-                description={fullscreenDescription}
-                onClose={() => setFullscreenImage(null)}
+                    src={fullscreenImage}
+                    description={fullscreenDescription}
+                    onClose={() => setFullscreenImage(null)}
                 />
             )}
         </div>

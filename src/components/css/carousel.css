@@ -83,3 +83,15 @@
     transform: scale(1.1);
 }
 
+.playpause-button{
+    width: 5vw;
+}
+
+.playpause-button:hover {
+    cursor: pointer;
+}
+
+.hide-playpause-button{
+    display: none;
+}
+
