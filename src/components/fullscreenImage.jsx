@@ -12,6 +12,7 @@ const FullscreenImage = ({src, description, onClose}) => {
             }
         }
 
+        console.log(description)
         document.body.style.overflow = 'hidden';
         document.addEventListener('keydown', keyPress)
 

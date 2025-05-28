@@ -4,6 +4,7 @@ import FullscreenImage from "./fullscreenImage"
 
 export const Gallery = () => {
     const [fullscreenImage, setFullscreenImage] = useState(null);
+    const [fullscreenDescription, setFullscreenDescription] = useState(null);
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -42,7 +43,10 @@ export const Gallery = () => {
                             key={idx} 
                             alt={photo.title} 
                             className="gallery_img" 
-                            onClick={() => setFullscreenImage(photo.photo_filename)}/>
+                            onClick={() => {
+                                setFullscreenImage(photo.photo_filename);
+                                setFullscreenDescription(photo.description);
+                            }}/>
                     </div>
                 )
             })}
@@ -50,6 +54,7 @@ export const Gallery = () => {
             {fullscreenImage && (
                 <FullscreenImage
                 src={fullscreenImage}
+                description={fullscreenDescription}
                 onClose={() => setFullscreenImage(null)}
                 />
             )}

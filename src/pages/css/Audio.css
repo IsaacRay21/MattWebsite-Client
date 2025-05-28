@@ -59,12 +59,12 @@
   }
 
   .audio-other h1 {
-    margin-left: 1.5rem;
+    margin-left: 0;
     font-size: 1rem;
   }
 
   .audio-other p {
-    margin-left: 1.5rem;
+    margin-left: 0;
     font-size: 1rem;
     overflow-y: scroll;
   }

@@ -64,3 +64,15 @@
     text-align: center;
     cursor: pointer;
 }
+
+@media (max-width: 768px){
+    .modal-content p {
+        font-size: x-small;
+    }
+}
+
+@media (max-width: 425px){
+    .modal-content p {
+        font-size:xx-small;
+    }
+}
