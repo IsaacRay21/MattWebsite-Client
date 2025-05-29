@@ -42,11 +42,11 @@
     transition: filter 0.3s ease;
 }
 
-.slide:hover > .description {
+.slide-img:hover + .description  {
     opacity: 1;
 }
 
-.slide:hover > img {
+.slide-img:hover {
     filter: brightness(50%) blur(2px);
     cursor: pointer;
 }
@@ -100,3 +100,15 @@
     cursor: pointer;
 }
 
+
+@media (max-width: 768px){
+    .description{
+        font-size: x-small;
+    }
+}
+
+@media (max-width: 425px){
+    .dexcription{
+        font-size:xx-small;
+    }
+}
