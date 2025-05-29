@@ -24,9 +24,9 @@ p{
 }
 
 .content{
-  width: 88vw;
+  width: 94vw;
   min-height: 80vh;
-  padding: 12.5vh 5vw 3vh 5vw;
+  padding: 10vh 2vw 3vh 2vw;
   overflow-x: hidden;
 }
 
